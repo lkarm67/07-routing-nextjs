@@ -10,10 +10,10 @@ import { Pagination } from "@/components/Pagination/Pagination";
 import { Modal } from "@/components/Modal/Modal";
 import { NoteForm } from "@/components/NoteForm/NoteForm";
 import SearchBox from "@/components/SearchBox/SearchBox";
-import Loading from "../loading";
+import Loading from "../../../loading";
 import css from "./NotesPage.module.css";
 
-export default function NotesClient() {
+export default function NotesClient({ tag }: { tag: string | undefined }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [page, setPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,8 +24,8 @@ export default function NotesClient() {
   }, 500);
 
   const { data, isLoading, isError } = useQuery<FetchNotesResponse, Error>({
-    queryKey: ["notes", searchQuery, page],
-    queryFn: () => fetchNotes({ search: searchQuery || undefined, page, perPage: 12 }),
+    queryKey: ["notes", searchQuery, page, tag],
+    queryFn: () => fetchNotes({ search: searchQuery || undefined, page, perPage: 12, tag }),
     placeholderData: keepPreviousData,
   });
 

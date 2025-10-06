@@ -5,6 +5,7 @@ export interface FetchNotesParams {
   search?: string;
   page?: number;
   perPage?: number;
+  tag?: string;
 }
 
 export interface FetchNotesResponse {
@@ -43,3 +44,4 @@ export const deleteNote = async (id: string): Promise<Note> => {
   const { data } = await api.delete<Note>(`/notes/${id}`);
   return data;
 };
+
