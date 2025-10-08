@@ -1,4 +1,4 @@
-import css from "./layoutNote.module.css";
+import css from "./layoutNotes.module.css";
 
 type NotesFilterLayoutProps = {
     children: React.ReactNode;
@@ -6,9 +6,9 @@ type NotesFilterLayoutProps = {
 };
 export default function NotesFilterLayout({ children, sidebar }: NotesFilterLayoutProps) {
     return (
-        <section className="css.conteiner">
-            <aside className="css.sidebar">{sidebar}</aside>
-            <div className="css.notesWrapper">{children}</div>
+        <section className={css.container}>
+            <aside className={css.sidebar}>{sidebar}</aside>
+            <div className={css.notesWrapper}>{children}</div>
         </section>
     );
 }
